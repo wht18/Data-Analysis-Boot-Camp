@@ -1,0 +1,39 @@
+# Import the Zip file
+path_to_zip_file = "datasets-1.zip"
+directory_to_extract_to = ""
+
+import zipfile
+zip_ref = zipfile.ZipFile(path_to_zip_file, 'r')
+zip_ref.extractall(directory_to_extract_to)
+zip_ref.close()
+
+# Load the csv data
+import pandas as pd
+Location = "datasets/axisdata.csv"
+df = pd.read_csv(Location)
+
+# Average cars sold per month
+df['Cars Sold'].mean()
+
+# Max Cars sold per month
+df['Cars Sold'].max()
+
+# Min cars sold per month
+df['Cars Sold'].min()
+
+# Average Cars sold per month by gender
+pd.pivot_table(df, values = ['Cars Sold'], index = ['Gender'])
+
+# Average hours worked by people selling > 3 Cars per month
+high_sellers = df[df['Cars Sold'] > 3]
+high_sellers['Hours Worked'].mean()
+
+# Average years of experience
+df['Years Experience'].mean()
+
+# Average years of experience for salesmen selling > 3 cars
+high_sellers = df[df['Cars Sold'] > 3]
+high_sellers['Years Experience'].mean()
+
+# Average cars sold per month based on training
+pd.pivot_table(df, values = ['Cars Sold'], index = ['SalesTraining'])
