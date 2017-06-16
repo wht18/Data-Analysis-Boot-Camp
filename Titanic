@@ -1,0 +1,28 @@
+# Import the Titanic dataset
+import pandas as pd
+Location = "titanic3.xls"
+df = pd.read_excel(Location)
+
+# Observe the data
+df.head()
+
+# Remove passengers who didn't survive
+df_survived= df[df["survived"] == 1]
+df_died= df[df["survived"] == 0]
+
+# Compare the average age of survivors to non-survivors
+# Average age of survivors
+df_survived['age'].mean()
+# Average age of non-survivors
+df_died['age'].mean()
+
+# Compare the averae ticket price that survivors paid to non-survivors
+# Average ticket price that survivors paid
+df_survived['fare'].mean()
+
+# Average ticket price that non-survivors paid
+df_died['fare'].mean()
+
+# The fare's price is a strong indicator of who may have survived. Age is not a strong indicator.
+# Average age of a survivor's fare was 49.36 compared to the average for non-survivor's fare of 23.35
+# This can be explained by the fact that wealthier passengers had easier access to lifeboats. 
