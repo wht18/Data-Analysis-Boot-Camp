@@ -13,27 +13,25 @@ import pandas as pd
 Location = "datasets/algebradata.csv"
 df = pd.read_csv(Location)
 
-# total number of students
+# Total number of students
 total_count = len(df)
 
-# number of students with A, B, C
-pass_grade = len(df[(df['Grade'] == 'A') | (df['Grade'] == 'B') | (df['Grade'] == 'c')])
+# Number of students with Grades A, B, or C
+pass_grade = len(df[(df['Grade'] == 'A') | (df['Grade'] == 'B') | (df['Grade'] == 'C')])
 
 # percentage of passing grade
 float(pass_grade) / total_count
 
 
-# Percentage of Women with a passing grade
+# Percentage of women with a passing grade
 women_total = len(df[df['Gender'] == 'F'])
-pass_grade_A = len(df[(df['Gender'] == 'F') & ((df['Grade'] == 'A'))])
-pass_grade_B = len(df[(df['Gender'] == 'F') & ((df['Grade'] == 'B'))])
-pass_grade_C = len(df[(df['Gender'] == 'F') & ((df['Grade'] == 'C'))])
-women_pass= pass_grade_A + pass_grade_B + pass_grade_C
-float(women_pass) / women_total
+pass_grade_women = len(df[(df['Gender'] == 'F') & ((df['Grade'] == 'A') | (df['Grade'] == 'B') | (df['Grade'] == 'C'))])
+float(pass_grade_women) / women_total
 
-# average hours of study for all students
+
+# Average hours of study for all students
 df['Hours of Study'].mean()
 
-# average hours of study for students with passing grade
-pass_grade = df[(df['Grade'] == 'A') | (df['Grade'] == 'B') | (df['Grade'] == 'c')]
+# Average hours of study for students with passing grade
+pass_grade = df[(df['Grade'] == 'A') | (df['Grade'] == 'B') | (df['Grade'] == 'C')]
 pass_grade['Hours of Study'].mean()
