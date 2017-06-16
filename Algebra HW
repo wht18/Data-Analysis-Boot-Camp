@@ -33,5 +33,6 @@ float(pass_grade_women) / women_total
 df['Hours of Study'].mean()
 
 # Average hours of study for students with passing grade
+# pass_grade will be a dataframe of all students with passing grades
 pass_grade = df[(df['Grade'] == 'A') | (df['Grade'] == 'B') | (df['Grade'] == 'C')]
 pass_grade['Hours of Study'].mean()
