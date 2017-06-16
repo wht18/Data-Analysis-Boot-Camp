@@ -37,3 +37,6 @@ high_sellers['Years Experience'].mean()
 
 # Average cars sold per month based on training
 pd.pivot_table(df, values = ['Cars Sold'], index = ['SalesTraining'])
+
+# What do you think the best indicator for a good salesperson
+#Training seems to be a strong indicator for a good salesperson. 
