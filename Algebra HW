@@ -25,7 +25,7 @@ pass_grade = len(df[(df['Grade'] == 'A') | (df['Grade'] == 'B') | (df['Grade'] =
 
 # Percentage of Women with a passing grade
 women_total = len(df[df['Gender'] == 'F'])
-pass_grade_female = len(df[(df['Gender'] == 'F') & (df['Grade'] == 'A') | (df['Grade'] == 'B') | (df['Grade'] == 'c')])
+pass_grade_female = len(df[(df['Gender'] == 'F') & ((df['Grade'] == 'A') | (df['Grade'] == 'B') | (df['Grade'] == 'c'))])
 (float(pass_grade_female) / women_total) * 100
 
 # average hours of study for all students
