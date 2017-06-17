@@ -23,8 +23,11 @@ float(pass_grade) / total_count
 
 
 # Percentage of women with a passing grade
+# total number of women
 women_total = len(df[df['Gender'] == 'F'])
+# total number of women who passed
 pass_grade_women = len(df[(df['Gender'] == 'F') & ((df['Grade'] == 'A') | (df['Grade'] == 'B') | (df['Grade'] == 'C'))])
+# percentage of women who passed
 float(pass_grade_women) / women_total
 
 
