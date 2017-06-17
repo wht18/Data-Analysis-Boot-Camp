@@ -13,12 +13,11 @@ import pandas as pd
 Location = "datasets/algebradata.csv"
 df = pd.read_csv(Location)
 
-# Total number of students
+# Percentage of passing grade
+# total number of students
 total_count = len(df)
-
-# Number of students with Grades A, B, or C
+# number of students with Grades A, B, or C
 pass_grade = len(df[(df['Grade'] == 'A') | (df['Grade'] == 'B') | (df['Grade'] == 'C')])
-
 # percentage of passing grade
 float(pass_grade) / total_count
 
