@@ -6,7 +6,7 @@ df = pd.read_excel(Location)
 # Observe the data
 df.head()
 
-# Remove passengers who didn't survive
+# Remove passengers who didn't survive and create a dataframe for survivors and non-survivors
 df_survived= df[df["survived"] == 1]
 df_died= df[df["survived"] == 0]
 
@@ -23,6 +23,14 @@ df_survived['fare'].mean()
 # Average ticket price that non-survivors paid
 df_died['fare'].mean()
 
-# The fare's price is a strong indicator of who may have survived. Age is not a strong indicator.
+# Max fare of non-survivor
+df_died['fare'].max()
+
+#Min fare of survivor
+df_survived['fare'].min()
+
+
+# The fare's price is a strong indicator of who may have survived.
 # Average age of a survivor's fare was 49.36 compared to the average for non-survivor's fare of 23.35.
-# This can be explained by the fact that wealthier passengers had easier access to lifeboats. 
+# This can be explained by the fact that wealthier passengers had easier access to lifeboats.
+# However, there were passengers who paid higher than this average who didn't survive and passengers who paid less and did survive.
