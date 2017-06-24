@@ -13,6 +13,11 @@ import pandas as pd
 Location = "datasets/algebradata.csv"
 df = pd.read_csv(Location)
 
+
+# Observe and clean the data
+df = df.dropna()
+df.head()
+
 # Percentage of passing grade
 # total number of students
 total_count = len(df)
@@ -38,3 +43,33 @@ df['Hours of Study'].mean()
 # pass_grade will be a dataframe of all students with passing grades
 pass_grade = df[(df['Grade'] == 'A') | (df['Grade'] == 'B') | (df['Grade'] == 'C')]
 pass_grade['Hours of Study'].mean()
+
+# Correlation between Hours of Study and Grade
+# First convert Grades into Numeric data
+
+def grade_convert(x):
+    if x == "A":
+        return 90
+    if x == "B":
+        return 80
+    if x == "C":
+        return 70
+    if x == "D":
+        return 60
+    if x == "F":
+        return 50
+
+# Change the 'Grade' Columns
+df['Grade'] = df['Grade'].apply(grade_convert)
+df.tail()
+
+# Correlation between Grade and Hours of Study
+df.corr()
+
+# Regression without intercept
+import statsmodels.formula.api as sm
+headers = list(df.columns.values)
+headers[4] = 'hours'
+df.columns = headers
+result = sm.ols(formula = 'Grade ~ hours -1', data = df).fit()
+result.summary()
