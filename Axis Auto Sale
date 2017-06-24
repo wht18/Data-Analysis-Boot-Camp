@@ -82,5 +82,6 @@ import statsmodels.formula.api as sm
 result = sm.ols(formula = 'Cars_Sold ~ Hours + Years_Experienced + SalesTraining - 1', data = df).fit()
 result.summary()
 
+#Regression without Years of Experience
 result2 = sm.ols(formula = 'Cars_Sold ~ Hours + SalesTraining - 1', data = df).fit()
 result2.summary()
