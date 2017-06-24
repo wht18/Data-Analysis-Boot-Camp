@@ -29,8 +29,30 @@ df_died['fare'].max()
 #Min fare of survivor
 df_survived['fare'].min()
 
+# Correlation of df (both survivals and deceased)
+df.corr()
 
-# The fare's price is a strong indicator of who may have survived.
-# Average age of a survivor's fare was 49.36 compared to the average for non-survivor's fare of 23.35.
+# Regression
+import statsmodels.formula.api as sm
+result = sm.ols(formula = 'survived ~ pclass + age + fare + parch', data = df).fit()
+result.summary()
+
+# Regression without intercept
+import statsmodels.formula.api as sm
+result = sm.ols(formula = 'survived ~ pclass + age + fare + parch-1', data = df).fit()
+result.summary()
+
+# Regression without intercept
+import statsmodels.formula.api as sm
+result = sm.ols(formula = 'survived ~  pclass +  age +  fare  - 1', data = df).fit()
+result.summary() # yields a r ** 2 of 0.396
+
+
+
+# The fare's price is an indicator of who may have survived. It has a positive correlation of 0.244  with survival.
 # This can be explained by the fact that wealthier passengers had easier access to lifeboats.
 # However, there were passengers who paid higher than this average who didn't survive and passengers who paid less and did survive.
+
+# Age is another indicator of who may have survived. Average age of a survivor's fare was 49.36 compared to the average for non-survivor's fare of 23.35.
+
+
