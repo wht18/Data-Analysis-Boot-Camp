@@ -40,3 +40,47 @@ pd.pivot_table(df, values = ['Cars Sold'], index = ['SalesTraining'])
 
 # What do you think the best indicator for a good salesperson
 #Training seems to be a strong indicator for a good salesperson. 
+
+# Change the Column names
+headers = list(df.columns.values)
+headers[3] = 'Hours'
+headers[5] = 'Years_Experienced'
+headers[6] = 'Cars_Sold'
+df.columns = headers
+df.head()
+
+# Make Sales Training into a numeric value
+# created a training conversion function
+def training(x):
+    if x == "Y":
+        return 1
+    if x == "N":
+        return 0
+        
+# Change the 'SalesTraining' Column using the training function created above
+df['SalesTraining'] = df['SalesTraining'].apply(training)
+df.tail()
+
+# Make Gender into a numeric value
+# created a Gender to numeric function
+def gender(x):
+    if x == "F":
+        return 1
+    if x == "M":
+        return 0
+
+# Change the 'Gender' Column
+df['Gender'] = df['Gender'].apply(gender)
+df.tail()
+
+# Correlation
+df.corr()
+# Hours and Sales Training have a low positive correlation of .25 and .19.
+
+# Reggsion without intercept
+import statsmodels.formula.api as sm
+result = sm.ols(formula = 'Cars_Sold ~ Hours + Years_Experienced + SalesTraining - 1', data = df).fit()
+result.summary()
+
+result2 = sm.ols(formula = 'Cars_Sold ~ Hours + SalesTraining - 1', data = df).fit()
+result2.summary()
