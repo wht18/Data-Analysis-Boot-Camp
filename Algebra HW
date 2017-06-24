@@ -66,10 +66,12 @@ df.tail()
 # Correlation between Grade and Hours of Study
 df.corr()
 
-# Regression without intercept
-import statsmodels.formula.api as sm
+# Change header name
 headers = list(df.columns.values)
 headers[4] = 'hours'
 df.columns = headers
+
+# Regression without intercept
+import statsmodels.formula.api as sm
 result = sm.ols(formula = 'Grade ~ hours -1', data = df).fit()
 result.summary()
