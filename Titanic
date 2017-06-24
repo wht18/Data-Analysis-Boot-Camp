@@ -48,6 +48,32 @@ result = sm.ols(formula = 'survived ~  pclass +  age +  fare  - 1', data = df).f
 result.summary() # yields a r ** 2 of 0.396
 
 
+# Some Maps of the distribution of fare between survivers and deceased
+import matplotlib.pyplot as plt
+% matplotlib inline
+df_survived.hist
+df_survived.hist('fare', bins = 4)
+plt.xlabel('Fare')
+plt.ylabel('Number of Passengers')
+plt.title('Distribution of Fare for Survivers')
+plt.yticks([0, 75, 150, 225, 300, 375, 450, 525, 600])
+plt.xticks([0, 75, 150, 225, 300, 375, 450, 500])
+df_died.hist('fare', bins = 4)
+plt.xlabel('Fare')
+plt.ylabel('Number of Passengers')
+plt.title('Distribution of Fare for Deceased')
+plt.yticks([0, 75, 150, 225, 300, 375, 450, 525, 600])
+plt.xticks([0, 75, 150, 225, 300, 375, 450, 500])
+
+# Maps of dist for age between survivers and deceased
+df_survived.hist('age')
+plt.xlabel('Age')
+plt.ylabel('Number of Passengers')
+plt.title('Distribution of Age for Survivers')
+df_died.hist('age')
+plt.xlabel('Age')
+plt.ylabel('Number of Passengers')
+plt.title('Distribution of Age for Deceased')
 
 # The fare's price is an indicator of who may have survived. It has a positive correlation of 0.244  with survival.
 # This can be explained by the fact that wealthier passengers had easier access to lifeboats.
